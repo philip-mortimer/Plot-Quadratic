@@ -6,4 +6,4 @@ This program displays a graphical plot of the quadratic function on the screen. 
 
 Run the file **main.py**.
 
-Note that Python 3 must be installed. The numpy and matplotlib python libraries must also be installed.
+Note that Python 3 must be installed. The **numpy** and **matplotlib** python libraries must also be installed.
