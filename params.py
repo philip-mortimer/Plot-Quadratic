@@ -20,17 +20,17 @@
 
 
 # Values for quadratic function x * x * a  +  x * b  + c
-a = 2
-b = 5
-c = -1
+A = 2
+B = 5
+C = -1
 
-min_x = -5
-max_x = 5
+MIN_X = -6
+MAX_X = 4
 
 # Number of x, y values in the plot.
-num_vals = 100
+NUM_VALS = 100
 
 # If True will print information such as quadratic roots to standard output as
 # well as generating the plot.
-verbose = True
+VERBOSE = True
 

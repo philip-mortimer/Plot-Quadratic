@@ -24,15 +24,15 @@ from quadratic_info import print_quadratic_info
 import params as prm
 
 def main():
-    if prm.verbose:
-        print_quadratic_info(prm.a, prm.b, prm.c)
+    if prm.VERBOSE:
+        print_quadratic_info(prm.A, prm.B, prm.C)
         
     # Create plot object.
     plot_obj = QuadraticPlot()
     
     # Assign settings to plot object.
-    plot_obj.x_range   = NumRange(prm.min_x, prm.max_x)
-    plot_obj.num_vals  = prm.num_vals
+    plot_obj.x_range   = NumRange(prm.MIN_X, prm.MAX_X)
+    plot_obj.num_vals  = prm.NUM_VALS
     
     # Check that the settings are valid.
     if not plot_obj.check_settings():
@@ -40,7 +40,7 @@ def main():
         return 1
     
     # Run the plot.
-    plot_obj.plot(prm.a, prm.b, prm.c)
+    plot_obj.plot(prm.A, prm.B, prm.C)
     
     return 0
 

@@ -142,26 +142,26 @@ def create_quadratic_plot_title(a, b, c):
     
     
 def print_quadratic_info(a, b, c):
-    print("coeffs:a={:g},b={:g},c={:g}".format(a, b, c))  
+    print("coeffs: a={:g},b={:g},c={:g}".format(a, b, c))  
     
     eqn_str = create_quadratic_eqn_str(a, b, c, TEXT_SQUARED)
-    print("which substituted in ax{}+bx+c gives:{}".format(
+    print("which substituted in ax{}+bx+c gives: {}".format(
             TEXT_SQUARED, eqn_str))
     
     if np.isclose(a, 0.0):
         if not np.isclose(b, 0.0):
             intercept = get_formatted_intercept(b, c)
-            print("intercept (value of x where y=0):{}".format(intercept))
+            print("intercept (value of x where y=0): {}".format(intercept))
     else:
         root1_str, root2_str = get_formatted_quadratic_roots(a, b, c)
         if root1_str == root2_str:
-            print("root (x value where y=0):{}".format(root1_str))
+            print("root (x value where y=0): {}".format(root1_str))
         else:            
-            print("roots (x values where y=0):{},{}".format(
+            print("roots (x values where y=0): {},{}".format(
                     root1_str, root2_str))
     
         vertex_x, vertex_y = find_quadratic_vertex(a, b, c)
         min_max = "maximum" if a < 0 else "minimum"
-        print("vertex (x,y where y is at a {}):x={},y={}".format(
+        print("vertex (x,y where y is at a {}): x={},y={}".format(
                 min_max, vertex_x, vertex_y))
     
