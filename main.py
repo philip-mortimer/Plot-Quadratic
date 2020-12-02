@@ -18,30 +18,29 @@
     <https://www.gnu.org/licenses/>.
 """
 
-from QuadraticPlot import QuadraticPlot
-from NumRange  import NumRange
-from quadratic_info import print_quadratic_info
+#import numpy as np
+#import matplotlib.pyplot as plt
+
+from create_quadratic_plot import create_quadratic_plot
+from plot_utils import create_x_array, save_plot, show_all
+from QuadraticInfo import QuadraticInfo
 import params as prm
 
 def main():
+    info = QuadraticInfo(prm.A, prm.B, prm.C)
     if prm.VERBOSE:
-        print_quadratic_info(prm.A, prm.B, prm.C)
-        
-    # Create plot object.
-    plot_obj = QuadraticPlot()
-    
-    # Assign settings to plot object.
-    plot_obj.x_range   = NumRange(prm.MIN_X, prm.MAX_X)
-    plot_obj.num_vals  = prm.NUM_VALS
-    
-    # Check that the settings are valid.
-    if not plot_obj.check_settings():
-        print('Error - {}'.format(plot_obj.err_str))
-        return 1
-    
-    # Run the plot.
-    plot_obj.plot(prm.A, prm.B, prm.C)
-    
+        info.print()
+
+    x = create_x_array(prm.MIN_X, prm.MAX_X, prm.NUM_VALS)
+    plot = create_quadratic_plot(x, info)
+    if prm.SHOW_PLOT:
+        show_all()
+
+    if prm.PLOT_PATH != '':
+        ok, err_str = save_plot(plot, prm.PLOT_PATH)
+        if not ok:
+            print(err_str)
+            return 1    
     return 0
 
 if __name__ == '__main__':

@@ -19,26 +19,21 @@
 """
 
 
-# Values for the quadratic function ax^2+bx+c.
-A = 2
-B = 5
-C = -1
+import matplotlib.pyplot as plt
+import numpy as np
 
-# Range of x values in the plot.
-MIN_X = -4
-MAX_X = 2
+def create_x_array(min_x, max_x, num_vals=100):
+    return np.linspace(min_x, max_x, num=num_vals)
 
-# Number of x, y values in the plot.
-NUM_VALS = 100
+def save_plot(plot: plt.Figure, path):
+    err_str = ''
+    try:
+        plot.savefig(path)
+        ok = True
+    except Exception as e:
+        ok = False
+        err_str = "Error saving plot: {}".format(e)
+    return (ok, err_str)
 
-# If True the program will display the plot on the screen.
-SHOW_PLOT = True
-
-# Path of file in which to save the plot. Plot will not be saved if path is an 
-# empty string ('').
-PLOT_PATH = ''
-
-# If True the program will print information such as the quadratic roots to
-# standard output as well as generate the plot.
-VERBOSE = True
-
+def show_all():
+    plt.show()

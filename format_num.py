@@ -19,26 +19,39 @@
 """
 
 
-# Values for the quadratic function ax^2+bx+c.
-A = 2
-B = 5
-C = -1
+import numpy as np
 
-# Range of x values in the plot.
-MIN_X = -4
-MAX_X = 2
 
-# Number of x, y values in the plot.
-NUM_VALS = 100
+def format_real(x):
+    """
+    Returns string representation of real number x.
+    """
+    if abs(x) < 1e6:
+        str = "{:0.4f}".format(x).rstrip('0').rstrip('.')
+        if str == "-0":
+            return "0"
+        else:
+            return str
+    else:
+        return "{:g}".format(x)
 
-# If True the program will display the plot on the screen.
-SHOW_PLOT = True
 
-# Path of file in which to save the plot. Plot will not be saved if path is an 
-# empty string ('').
-PLOT_PATH = ''
+def format_complex(z):
+    """
+    Returns string representation of complex number z.
+    """
+    real_str = format_real(z.real)
+    imag_str = format_real(abs(z.imag))
 
-# If True the program will print information such as the quadratic roots to
-# standard output as well as generate the plot.
-VERBOSE = True
+    sign = '-' if z.imag < 0 else '+'
+    return "({} {} {}i)".format(real_str, sign, imag_str)
 
+
+def format_num(x):
+    """
+    Returns string representation of x which may be complex or real.
+    """
+    if np.isreal(x):
+        return format_real(x.real)
+    else:
+        return format_complex(x)
